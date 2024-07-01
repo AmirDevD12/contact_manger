@@ -15,6 +15,7 @@ Future<void> main() async {
   await Hive.initFlutter();
    Hive.registerAdapter(ContactModelAdapter());
   await Hive.openBox<ContactModel>("contactsBox");
+  await Hive.openBox<ContactModel>("contactSend");
   runApp(const MyApp());
 }
 
