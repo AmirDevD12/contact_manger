@@ -1,4 +1,4 @@
-import 'package:contact_manger/features/contact_list/presentation/controller/contact_list.dart';
+import 'package:contact_manger/features/home/presentation/controller/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -16,7 +16,7 @@ class SearchContact extends StatelessWidget {
       ),
 
       child:TextField(
-        controller: Get.find<ContactListController>().searchController,
+        controller: Get.find<HomeController>().searchController,
         decoration: const InputDecoration(
           labelText: 'Search Contact',
           border: OutlineInputBorder(),

@@ -1,6 +1,6 @@
 import 'package:contact_manger/core/widgets/bottom_navigation_bar.dart';
 import 'package:contact_manger/core/widgets/search_contact.dart';
-import 'package:contact_manger/features/contact_list/presentation/controller/contact_list.dart';
+import 'package:contact_manger/features/home/presentation/controller/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -9,7 +9,7 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.find<ContactListController>();
+    final controller = Get.find<HomeController>();
 
     return Scaffold(
       appBar: AppBar(title: const SearchContact()),
@@ -20,11 +20,8 @@ class Home extends StatelessWidget {
           },
         ),
 
-      body:GetBuilder<ContactListController>(
-        init: ContactListController(),
-          builder: (contactController){
-        return contactController.pages[contactController.currentIndex.value];
-      }),
+      body:Obx(()=>controller.pages[controller.currentIndex.value]
+      ),
     );
   }
 }

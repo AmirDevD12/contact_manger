@@ -1,7 +1,7 @@
 
 import 'package:contact_manger/features/contact_list/presentation/binding/contact_list_mobile_binding.dart';
-import 'package:contact_manger/features/contact_list/presentation/widgets/home.dart';
-import 'package:contact_manger/features/contact_list/presentation/widgets/permisiion.dart';
+import 'package:contact_manger/features/home/presentation/home.dart';
+import 'package:contact_manger/features/permission/presentation/permisiion.dart';
 import 'package:get/get.dart';
 
 class Routings {

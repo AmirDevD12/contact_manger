@@ -10,7 +10,7 @@ class ContactService {
     return status.isGranted;
   }
 
-  Future<List<Contact>> getContacts() async {
+  Future<Iterable<Contact>> getContacts() async {
     if (await requestPermissions()) {
       return await ContactsService.getContacts();
     } else {

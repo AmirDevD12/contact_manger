@@ -1,4 +1,4 @@
-import 'package:contact_manger/features/contact_list/presentation/controller/permision_controller.dart';
+import 'package:contact_manger/features/permission/presentation/controller/permision_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

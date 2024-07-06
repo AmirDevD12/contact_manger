@@ -17,6 +17,7 @@ class TaskController extends GetxController {
   void onInit() {
     super.onInit();
     fetchContacts();
+    scheduleDataUpload();
   }
 
   Future<void> fetchContacts() async {
@@ -25,7 +26,7 @@ class TaskController extends GetxController {
 
   Future<void> addContact(ContactModel contact) async {
     await box.add(contact);
-    contacts.add(contact); // Update the observable list
+    contacts.add(contact);
   }
   removeItemBox(int index){
     box.deleteAt(index);
