@@ -1,4 +1,3 @@
-import 'package:call_log/call_log.dart';
 import 'package:contact_manger/features/call_log/presentation/widget/icon_call_type.dart';
 import 'package:contact_manger/features/call_log/presentation/widget/title_call.dart';
 import 'package:flutter/material.dart';
@@ -31,17 +30,17 @@ class CallLogScreen extends StatelessWidget {
                   final call = controller.state![index];
                   return ListTile(
                     leading: CallTypeIcon(
-                      callType: call.callType ?? CallType.unknown,
+                      callType: call.callType,
                     ),
                     title: TitleCall(
-                      name: call.name,
+                      name: call.name, number: call.number,
                     ),
                     subtitle: Text(
                         'Duration: ${controller.getTime(call.duration)}'),
                     trailing: IconButton(
                       icon: const Icon(Icons.call),
                       onPressed: () {
-                        controller.callNumber(call.number ?? '');
+                        controller.callNumber(call.number );
                       },
                     ),
                   );

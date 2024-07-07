@@ -1,9 +1,9 @@
-import 'package:call_log/call_log.dart';
 import 'package:flutter/material.dart';
 
 class TitleCall extends StatelessWidget {
  final String name;
-  const TitleCall({super.key, required this.name});
+ final String number;
+  const TitleCall({super.key, required this.name, required this.number});
 
 
   @override
@@ -11,7 +11,7 @@ class TitleCall extends StatelessWidget {
     if (name !="" || name.isNotEmpty) {
       return Text(name);
     } else {
-      return const Text( 'Unknown');
+      return Text(number);
     }
   }
 }

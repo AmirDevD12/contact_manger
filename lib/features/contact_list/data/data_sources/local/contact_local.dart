@@ -9,7 +9,8 @@ abstract class ContactsLocalDataSource {
 class ContactsLocalDataSourceImpl implements ContactsLocalDataSource {
   @override
   Future<List<ContactLocalModel>> getContacts() async {
-    final contacts = await ContactsService.getContacts();
+
+    final contacts = await ContactsService.getContacts(withThumbnails: false,orderByGivenName: false,);
     return contacts.map((contact) => ContactLocalModel.fromContact(contact)).toList();
   }
 }

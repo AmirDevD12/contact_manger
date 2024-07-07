@@ -3,7 +3,6 @@ import 'package:contact_manger/locator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/adapters.dart';
-
 import 'core/constants/routings.dart';
 import 'features/task/data/model/contact_model.dart';
 
@@ -23,6 +22,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      useInheritedMediaQuery: true,
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: AppTheme.defaultTheme,

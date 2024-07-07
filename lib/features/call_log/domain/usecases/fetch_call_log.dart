@@ -1,4 +1,3 @@
-import 'package:call_log/call_log.dart';
 import 'package:contact_manger/core/error_dartz/failures.dart';
 import 'package:contact_manger/core/usecase/usecase.dart';
 import 'package:contact_manger/features/call_log/domain/entity/call_log_entity.dart';

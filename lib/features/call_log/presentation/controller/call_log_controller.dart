@@ -32,25 +32,34 @@ class CallLogController extends GetxController with StateMixin<List<CallLogEntit
     fetchCallLogs();
     timer = Timer.periodic(const Duration(seconds: 10), (timer) {
       checkForCallLogChanges();
+
     });
     _callLogStreamController.stream.listen((newSize) {
       Get.bottomSheet(
           isDismissible: false,
           enableDrag: false,
-          callLogs.first.name != null && callLogs.first.name!=""
+           callLogs.first.name!=""
               ? const TaskContact()
               : const TaskNoContact());
     });
   }
 
   void fetchCallLogs() async {
-
       change(null, status: RxStatus.loading());
       final result =await getCallLogs.call(NoParams());
+
       result.fold(
         (failure) =>
             change(null, status: RxStatus.error('Error fetching callLogs')),
-        (callLog) => change(callLog, status: RxStatus.success()),
+        (callLog) {
+          callLogs.value=callLog;
+          textEditingControllerName.text = callLogs.first.name ;
+          textEditingControllerPhone.text = callLogs.first.number;
+          _callLogStreamController.add(callLogs.length);
+          return change(callLog, status: RxStatus.success());
+
+          },
+
       );
 
   }
@@ -61,10 +70,8 @@ class CallLogController extends GetxController with StateMixin<List<CallLogEntit
       final logs = await CallLog.get();
       if (logs.length != length && length != -1) {
         sharedPreferences.saveLengthLog(logs.length);
-        // callLogs.assignAll(logs);
-        textEditingControllerName.text = callLogs.first.name ?? "";
-        textEditingControllerPhone.text = callLogs.first.number ?? "";
-        _callLogStreamController.add(logs.length);
+         fetchCallLogs();
+
       }
     } catch (e) {}
   }

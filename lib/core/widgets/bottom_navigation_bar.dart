@@ -15,11 +15,11 @@ class BottomNavigationBarWidget extends StatelessWidget {
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.recent_actors),
-          label: 'Recent',
+          label: 'task',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.person),
-          label: 'Profile',
+          icon: Icon(Icons.call),
+          label: 'call log',
         ),
       ],
     );

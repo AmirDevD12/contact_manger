@@ -8,16 +8,20 @@ import 'package:contact_manger/locator.dart';
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
-
 class TaskController extends GetxController {
+  final dio = getIt<DioHttpClient>();
   var contacts = <ContactModel>[].obs;
   final box = Hive.box<ContactModel>('contactsBox');
 
   @override
   void onInit() {
     super.onInit();
+    // Workmanager().registerPeriodicTask(
+    //   "1",
+    //   "simple",
+    //   frequency: const Duration(hours: 1), // Schedule to run every hour
+    // );
     fetchContacts();
-    scheduleDataUpload();
   }
 
   Future<void> fetchContacts() async {
@@ -28,43 +32,38 @@ class TaskController extends GetxController {
     await box.add(contact);
     contacts.add(contact);
   }
-  removeItemBox(int index){
+
+  removeItemBox(int index) {
     box.deleteAt(index);
     fetchContacts();
   }
-  void scheduleDataUpload() {
-    Timer.periodic(const Duration(hours: 1), (timer) async {
-      await sendDataToServer();
-    });
-  }
+
+
 
   Future<void> sendDataToServer() async {
-   final dio = getIt<DioHttpClient>();
-   final box = Hive.box<ContactModel>('contactsSend');
-   final listSendContact = box.values.toList();
-    try {
-      checkRepetitious(contacts,listSendContact);
-      List<Map<String, dynamic>> contactsList = contacts.map((contact) =>
-      {
-        'name': contact.name,
-        'phone': contact.phone,
-        'task': contact.task,
-      }).toList();
+      try {
+        List<Map<String, dynamic>> contactsFromMapList =
+        contacts.map((map) => map.toMap()).toList();
 
-      final response = await dio.get("", {}, contactsList , Options());
-      for (var contact in contacts) {
-        box.add(contact);
+        final response = await dio.get("", {}, contactsFromMapList, Options());
+        for (var contact in contacts) {
+          box.add(contact);
+        }
+        DataSuccess(response);
+      } on AppException catch (e) {
+        return await CheckExceptions.getError(e);
       }
-      DataSuccess(response);
-    }on AppException catch(e){
-      return await CheckExceptions.getError(e);
-    }}
-  void checkRepetitious(List<ContactModel> list1, List<ContactModel> list2){
-    for (int i = 0; i < list1.length; i++) {
-      if (list1[i].name != list2[i].name ||
-          list1[i].phone != list2[i].phone ||
-          list1[i].task != list2[i].task) {
-        list1.removeAt(i);
+
+  }
+
+  void checkRepetitious() {
+    final box = Hive.box<ContactModel>('contactsSend');
+    final listSendContact = box.values.toList();
+    for (int i = 0; i < contacts.length; i++) {
+      if (contacts[i].name != listSendContact[i].name ||
+          contacts[i].phone != listSendContact[i].phone ||
+          contacts[i].task != listSendContact[i].task) {
+        contacts.removeAt(i);
       }
     }
   }

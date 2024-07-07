@@ -21,7 +21,7 @@ class AppRouting {
       page: () => const PermissionsScreen(),),
         GetPage(
             name: "/home",
-            page: () => Home(),
+            page: () => const Home(),
             binding: ContactListMobileBinding()),
 
       ];

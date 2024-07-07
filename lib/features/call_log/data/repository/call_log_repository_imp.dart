@@ -1,4 +1,3 @@
-import 'package:call_log/call_log.dart';
 import 'package:contact_manger/core/error_dartz/failures.dart';
 import 'package:contact_manger/core/error_handling/app_exception.dart';
 import 'package:contact_manger/features/call_log/data/data_sorce/local/call_log_local.dart';
