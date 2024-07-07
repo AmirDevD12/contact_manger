@@ -17,10 +17,13 @@ class ContactListMobileBinding extends Bindings {
     Get.put(ContactsLocalDataSourceImpl());
     Get.put(ContactsRepositoryImpl(localDataSource: Get.find()));
     Get.put(GetContacts(Get.find<ContactsRepositoryImpl>()));
-    Get.put(CallLogLocalDataSourceImpl());
     Get.put(ContactsController(getContacts: Get.find()));
+
+    Get.put(CallLogLocalDataSourceImpl());
+    Get.put(CallLogRepositoryImp(callLogs: Get.find()));
     Get.put(GetCallLogs(Get.find<CallLogRepositoryImp>()));
     Get.put(CallLogController(getCallLogs: Get.find()));
+
     Get.put(HomeController());
     Get.put(TaskController());
   }

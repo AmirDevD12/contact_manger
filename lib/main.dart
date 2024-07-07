@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:hive_flutter/adapters.dart';
 
 import 'core/constants/routings.dart';
-import 'features/call_log/data/models/contact_model.dart';
+import 'features/task/data/model/contact_model.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

@@ -1,4 +1,4 @@
-import 'package:contact_manger/features/call_log/data/models/contact_model.dart';
+import 'package:contact_manger/features/task/data/model/contact_model.dart';
 import 'package:contact_manger/features/call_log/presentation/controller/call_log_controller.dart';
 import 'package:contact_manger/features/call_log/presentation/widget/text_field.dart';
 import 'package:contact_manger/features/task/presentation/controller/contact_list_controller.dart';

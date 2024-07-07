@@ -3,7 +3,7 @@ import 'package:contact_manger/core/error_handling/app_exception.dart';
 import 'package:contact_manger/core/error_handling/check_exceptions.dart';
 import 'package:contact_manger/core/network/dio.dart';
 import 'package:contact_manger/core/resources/data_state.dart';
-import 'package:contact_manger/features/call_log/data/models/contact_model.dart';
+import 'package:contact_manger/features/task/data/model/contact_model.dart';
 import 'package:contact_manger/locator.dart';
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';

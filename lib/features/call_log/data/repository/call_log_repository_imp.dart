@@ -8,7 +8,7 @@ import 'package:dartz/dartz.dart';
 
 class CallLogRepositoryImp implements CallLogRepository {
 
-  final CallLogsDataSourceLocal callLogs;
+  final CallLogLocalDataSourceImpl callLogs;
 
   CallLogRepositoryImp({required this.callLogs});
 
