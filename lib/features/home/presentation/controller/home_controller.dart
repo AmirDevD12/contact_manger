@@ -1,6 +1,4 @@
 import 'package:contact_manger/features/call_log/presentation/call_log.dart';
-import 'package:contact_manger/features/contact_list/Domain/entity/contact_entity.dart';
-import 'package:contact_manger/features/contact_list/Domain/use_cases/fetch_contacts.dart';
 import 'package:contact_manger/features/contact_list/presentation/contact_list_mobilel.dart';
 import 'package:contact_manger/features/task/presentation/contact_list_local.dart';
 import 'package:flutter/material.dart';

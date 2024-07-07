@@ -6,16 +6,17 @@ import 'package:shared_preferences/shared_preferences.dart';
 class saveSharedPreferences {
   late SharedPreferences sharedPreferences;
 
-  saveSharedPreferences () {
+  saveSharedPreferences() {
     sharedPreferences = getIt<SharedPreferences>();
   }
+
   saveLengthLog(int length) async {
     sharedPreferences.setInt("length", length);
   }
 
   Future load() async {
-    final length =sharedPreferences.getInt("length");
-    if(length != null){
+    final length = sharedPreferences.getInt("length");
+    if (length != null) {
       return length;
     }
     return -1;

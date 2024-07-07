@@ -4,12 +4,12 @@ import 'package:contact_manger/features/home/presentation/home.dart';
 import 'package:contact_manger/features/permission/presentation/permisiion.dart';
 import 'package:get/get.dart';
 
-class Routings {
-  static final Routings _singleton = Routings._internal();
+class AppRouting {
+  static final AppRouting _singleton = AppRouting._internal();
 
-  factory Routings() => _singleton;
+  factory AppRouting() => _singleton;
 
-  Routings._internal();
+  AppRouting._internal();
 
   final home = '/home';
   final permission = '/permission';

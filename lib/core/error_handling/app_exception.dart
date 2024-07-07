@@ -35,3 +35,6 @@ class FetchDataException extends AppException {
 class UnauthorisedException extends AppException {
   UnauthorisedException({String? message}) : super(message: message ?? "token has been expired.");
 }
+class LocalException extends AppException {
+  LocalException({String? message}) : super(message: message ?? "load contact error.");
+}

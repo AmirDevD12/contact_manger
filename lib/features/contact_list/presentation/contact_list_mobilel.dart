@@ -8,18 +8,20 @@ class ContactListMobile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.find<ContactController>();
 
-  return  Obx(() {
-      if (controller.isLoading.value) {
+  return  GetBuilder<ContactsController>(
+    builder: (controller) {
+      if (controller.status.isLoading) {
         return const Center(child: CircularProgressIndicator());
+      } else if (controller.status.isError) {
+        return Center(child: Text(controller.status.errorMessage ?? 'Unknown error'));
       } else {
         return ListView.builder(
           shrinkWrap: true,
           scrollDirection: Axis.vertical,
-          itemCount: controller.contacts.length,
+          itemCount: controller.state?.length??0,
           itemBuilder: (BuildContext context, int index) {
-            final contact = controller.contacts[index];
+            final contact = controller.state![index];
             return Container(
                 decoration: BoxDecoration(
                   borderRadius: const BorderRadius.all(Radius.circular(20)),
@@ -37,7 +39,9 @@ class ContactListMobile extends StatelessWidget {
                 ));
           },
         );
+
       }
-    });
+    },
+  );
   }
 }

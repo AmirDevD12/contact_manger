@@ -10,8 +10,7 @@ final getIt = GetIt.instance;
 Future<void> setup() async {
   getIt.registerSingleton<Dio>(Dio());
   getIt.registerSingleton<CallLog>(CallLog());
-  SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-  getIt.registerSingleton<SharedPreferences>(sharedPreferences);
+  getIt.registerSingleton<SharedPreferences>(await SharedPreferences.getInstance());
   getIt.registerSingleton<saveSharedPreferences>(saveSharedPreferences());
   getIt.registerSingleton<DioHttpClient>(DioHttpClient(dio: getIt<Dio>()));
 

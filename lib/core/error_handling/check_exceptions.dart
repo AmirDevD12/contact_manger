@@ -1,7 +1,6 @@
-import 'package:contact_manger/core/network/dio.dart';
 import 'package:contact_manger/core/resources/data_state.dart';
-import 'package:contact_manger/locator.dart';
 import 'package:dio/dio.dart';
+
 import 'app_exception.dart';
 
 class CheckExceptions {
@@ -33,7 +32,6 @@ class CheckExceptions {
 
       case UnauthorisedException:
         ///for refresh token
-        final dioHttpClient = getIt<DioHttpClient>();
 
         return DataFailed(appException.message);
 

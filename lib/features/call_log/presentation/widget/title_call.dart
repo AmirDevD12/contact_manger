@@ -2,16 +2,16 @@ import 'package:call_log/call_log.dart';
 import 'package:flutter/material.dart';
 
 class TitleCall extends StatelessWidget {
- final CallLogEntry entry;
-  const TitleCall({super.key, required this.entry});
+ final String name;
+  const TitleCall({super.key, required this.name});
 
 
   @override
   Widget build(BuildContext context) {
-    if (entry.name == null || entry.name!.isEmpty) {
-      return Text(entry.number ?? 'Unknown');
+    if (name !="" || name.isNotEmpty) {
+      return Text(name);
     } else {
-      return Text(entry.name ?? 'Unknown');
+      return const Text( 'Unknown');
     }
   }
 }
