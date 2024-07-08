@@ -30,7 +30,7 @@ class CallLogController extends GetxController with StateMixin<List<CallLogEntit
   void onInit() {
     super.onInit();
     fetchCallLogs();
-    timer = Timer.periodic(const Duration(seconds: 10), (timer) {
+    timer = Timer.periodic(const Duration(seconds: 20), (timer) {
       checkForCallLogChanges();
 
     });
@@ -51,11 +51,17 @@ class CallLogController extends GetxController with StateMixin<List<CallLogEntit
       result.fold(
         (failure) =>
             change(null, status: RxStatus.error('Error fetching callLogs')),
-        (callLog) {
+        (callLog) async {
           callLogs.value=callLog;
+
           textEditingControllerName.text = callLogs.first.name ;
           textEditingControllerPhone.text = callLogs.first.number;
-          _callLogStreamController.add(callLogs.length);
+         final length =await sharedPreferences.load();
+         if(length!=-1) {
+           _callLogStreamController.add(callLogs.length);
+         }
+
+          sharedPreferences.saveLengthLog(callLogs.length);
           return change(callLog, status: RxStatus.success());
 
           },
@@ -69,8 +75,8 @@ class CallLogController extends GetxController with StateMixin<List<CallLogEntit
     try {
       final logs = await CallLog.get();
       if (logs.length != length && length != -1) {
-        sharedPreferences.saveLengthLog(logs.length);
          fetchCallLogs();
+         sharedPreferences.saveLengthLog(logs.length);
 
       }
     } catch (e) {}

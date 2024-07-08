@@ -17,6 +17,7 @@ class ContactListMobile extends StatelessWidget {
         return Center(child: Text(controller.status.errorMessage ?? 'Unknown error'));
       } else {
         return ListView.builder(
+          controller: controller.scroll,
           shrinkWrap: true,
           scrollDirection: Axis.vertical,
           itemCount: controller.state?.length??0,

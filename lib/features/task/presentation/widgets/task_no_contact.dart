@@ -1,4 +1,4 @@
-import 'package:contact_manger/features/task/data/model/contact_model.dart';
+import 'package:contact_manger/features/task/data/model/task_model.dart';
 import 'package:contact_manger/features/call_log/presentation/controller/call_log_controller.dart';
 import 'package:contact_manger/features/call_log/presentation/widget/text_field.dart';
 import 'package:contact_manger/features/task/presentation/controller/contact_list_controller.dart';
@@ -54,7 +54,7 @@ class TaskNoContact extends StatelessWidget {
               ),
               onPressed: () {
                 if (controller.checkValueTextField()) {
-                  final newContact = ContactModel(
+                  final newContact = TaskModel(
                     name:
                         "${controller.textEditingControllerName.text} ${controller.textEditingControllerLastName.text}",
                     phone: controller.textEditingControllerPhone.text,

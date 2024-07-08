@@ -41,8 +41,7 @@ class DioHttpClient extends IDioHttpClient {
       url,
       queryParameters: queryParameters,
       options: options,
-    )
-        .onError((DioException error, stackTrace) {
+    ).onError((DioException error, stackTrace) {
       return CheckExceptions.response(error.response!);
     });
     return response;

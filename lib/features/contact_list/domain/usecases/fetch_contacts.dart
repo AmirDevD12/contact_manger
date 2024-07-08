@@ -2,16 +2,16 @@ import 'package:contact_manger/core/error_dartz/failures.dart';
 import 'package:contact_manger/core/usecase/usecase.dart';
 import 'package:contact_manger/features/contact_list/domain/entity/contact_entity.dart';
 import 'package:contact_manger/features/contact_list/domain/repository/contact_repository.dart';
-import 'package:dartz/dartz.dart';
+import 'package:either_dart/either.dart';
 
 
-class GetContacts implements UseCase<List<Contact>, NoParams> {
+class GetContacts implements UseCase<List<Contact>,String> {
   final ContactsRepository repository;
 
   GetContacts(this.repository);
 
   @override
-  Future<Either<Failure, List<Contact>>> call(NoParams params) async {
-    return await repository.getContacts();
+  Future<Either<Failure?, List<Contact>>> call(String query) async {
+    return  repository.getContacts(query);
   }
 }

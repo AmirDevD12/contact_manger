@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -6,7 +7,6 @@ import 'controller/contact_list_controller.dart';
 class TaskList extends StatelessWidget {
 
    const TaskList({super.key});
-
 
   @override
   Widget build(BuildContext context) {
@@ -65,4 +65,5 @@ class TaskList extends StatelessWidget {
       ],
     );
   }
+
 }
